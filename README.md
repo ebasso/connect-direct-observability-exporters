@@ -15,16 +15,15 @@ connect-direct-prometheus-exporters/
 ├── .gitignore
 │
 ├── exporters/
-│   ├── cd-java-exporter/
-│   ├── cd-java-pushgateway/     # Pushgateway exporter for short-lived jobs
 │   ├── cd-cli-exporter/         # Uses Connect:Direct CLI commands
-│   ├── cd-http-exporter/        # Uses HTTP requests (if applicable)
+│   ├── cd-restapi-exporter/     # Uses Connect:Direct WebServices HTTP requests
+│   ├── cd-java-exporter/.       # Uses Connect:Direct Java API
+│   ├── cd-java-pushgateway/     # Pushgateway exporter for short-lived jobs
 │
 ├── docs/
-│   ├── architecture.md
+│   ├── cd-cli-exporter.md
 │   ├── cd-restapi-exporter.md
-│   ├── cli-exporter.md
-│   ├── java-exporter.md
+│   ├── cd-java-exporter.md
 │   └── prometheus-setup.md
 │
 ├── examples/
@@ -34,31 +33,20 @@ connect-direct-prometheus-exporters/
 ```
 ---
 
+
 ## Planned Exporters
 
 ### Python (CLI)
-- Executes Connect:Direct commands via CLI and exposes metrics via HTTP (Flask + Prometheus client) or Pushgateway.
+- Executes Connect:Direct commands via CLI and exposes metrics via HTTP (Prometheus client) or Pushgateway.
 - Useful when Java API is not available or CLI automation is preferred.
 
 ### Python (HTTP Requests)
-- Collects metrics via HTTP/REST endpoints (if available).
+- Collects metrics via Connect:Direct WebServices HTTP/REST endpoints.
 - Flexible alternative when CLI or SDK is not accessible.
 
 ### Java (CD protocol)
-- Long-running service exposing `/metrics` using **Prometheus Java client**.
-- Metrics:
-  - `cdprocess_runs_total{status="success|failure"}`
-  - `cdprocess_up`
-  - `cdprocess_last_exit_code`
-  - `cdprocess_duration_seconds` (histogram)
-  - `cdprocess_errors_total{exception="<type>"}`
-  - `cdprocess_last_process_number`
-  - `cdprocess_last_run_timestamp_seconds`
-- Configuration via **environment variables** (no secrets in code).
-
-### Java (Pushgateway)
-- For short-lived jobs: pushes metrics to **Prometheus Pushgateway** after execution.
-- Ideal for scheduled tasks without an active HTTP endpoint.
+- Collects metrics via Connect:Direct Java API and exposes metrics via HTTP (Prometheus client).
+- Useful when CLI automation or Connect:Direct WebServices is not available.
 
 
 ## 🚀 How to Run (Overview)

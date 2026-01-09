@@ -16,7 +16,7 @@ downloads/
 eggs/
 .eggs/
 lib/
-libS/
+libs/
 lib64/
 var/
 MANIFEST
