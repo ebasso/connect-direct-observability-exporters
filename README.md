@@ -7,7 +7,7 @@ This repository contains **Prometheus exporters** for monitoring **IBM Connect:D
 ---
 
 ## Repository Structure
-
+```
 connect-direct-prometheus-exporters/
 │
 ├── README.md
@@ -31,7 +31,7 @@ connect-direct-prometheus-exporters/
 │   ├── prometheus.yml
 │   ├── docker-compose.yml
 │   └── grafana-dashboard.json
-
+```
 ---
 
 ## Planned Exporters
