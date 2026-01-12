@@ -24,6 +24,8 @@ MANIFEST
 # Django stuff:
 *.log
 
+
+
 # Environments
 .env
 .envrc
@@ -35,5 +37,26 @@ env.bak/
 venv.bak/
 
 readme.txt
-exporters/cd-java-exporter
+truststore.jks
 exporters/cd-restapi-exporter
+
+# Maven
+target/
+*.jar
+*.war
+*.ear
+*.class
+
+# Maven wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA
+.idea/
+*.iml
