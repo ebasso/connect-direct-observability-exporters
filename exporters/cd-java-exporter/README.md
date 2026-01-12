@@ -74,7 +74,7 @@ java -jar target/cd-exporter.jar --ipaddress=<IP ADDRESS> --port=<1363> --user=<
 
 #### Basic usage (default port 9402, interval 60s)
 ```bash
-java -jar target/cd-exporter.jar --ipaddress=192.168.1.3 --user=admin --password=password123 --port=1363 --protocol=TLS12
+java -jar target/cd-exporter.jar --ipaddress=192.168.1.3 --user=admin --password=password123 --port=1363 --protocol=TCPIP
 ```
 
 #### Custom HTTP port and scrape interval

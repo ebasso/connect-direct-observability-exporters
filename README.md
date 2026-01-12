@@ -17,8 +17,7 @@ connect-direct-prometheus-exporters/
 ├── exporters/
 │   ├── cd-cli-exporter/         # Uses Connect:Direct CLI commands
 │   ├── cd-restapi-exporter/     # Uses Connect:Direct WebServices HTTP requests
-│   ├── cd-java-exporter/.       # Uses Connect:Direct Java API
-│   ├── cd-java-pushgateway/     # Pushgateway exporter for short-lived jobs
+│   ├── cd-java-exporter/        # Uses Connect:Direct Java APIbs
 │
 ├── docs/
 │   ├── cd-cli-exporter.md
@@ -72,11 +71,11 @@ python3.11 ibmcd_cli_exporter.py --base-path "/home/cdnode02" --port 9400
 
 ### Java Exporter
 ```bash
-# Build (Maven) inside exporters/java/cd-java-exporter
+# Build (Maven) inside exporters/cd-java-exporter
 mvn -q -DskipTests package
 
 # Run (ensure CDJAI.jar is in classpath)
-java -cp "target/cd-java-exporter-1.0.0.jar:./lib/CDJAI.jar" CDExporter
+java -jar target/cd-exporter.jar --ipaddress=192.168.1.3 --user=admin --password=password123 --port=1363 --protocol=TCPIP
 # Metrics available at: http://localhost:9402/metrics
 ```
 
@@ -85,7 +84,7 @@ java -cp "target/cd-java-exporter-1.0.0.jar:./lib/CDJAI.jar" CDExporter
 ## 📅 Roadmap
 - [x] Python CLI exporter.
 - [ ] Python REST API exporter.
-- [ ] Java exporter.
+- [x] Java exporter.
 - [ ] Grafana dashboard in `examples/grafana-dashboard.json`.
 - [ ] Troubleshooting guide for network/auth issues.
 
