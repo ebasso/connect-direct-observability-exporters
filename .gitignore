@@ -9,6 +9,7 @@ client-truststore.p12
 client-keystore.p12
 cert-auth-mediawiki.txt
 rest-client.pem
+*.pem
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
