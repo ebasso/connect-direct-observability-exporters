@@ -1,0 +1,20 @@
+[Unit]
+Description=IBM Connect:Direct OpenTelemetry Exporter
+After=network.target
+
+[Service]
+User=cdadmin
+Group=cdadmin
+Type=simple
+Restart=always
+WorkingDirectory=/opt/cd-otel-app
+
+ExecStart=/usr/bin/python3 /opt/cd-otel-app/ibm_cd_otel_exporter.py \
+  --base-path /opt/cdunix \
+  --port 9400 \
+  --interval 60
+
+ExecStop=/bin/kill -SIGTERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target

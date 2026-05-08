@@ -1,0 +1,27 @@
+[Unit]
+Description=IBM Connect:Direct Prometheus Exporter (Java)
+After=network.target
+
+[Service]
+Type=simple
+User=cdadmin
+Group=cdadmin
+WorkingDirectory=/opt/cd-exporter
+
+ExecStart=/usr/bin/java \
+  -jar /opt/cd-exporter/target/cd-exporter.jar \
+  --ipaddress 192.168.1.3 \
+  --port 1363 \
+  --user admin \
+  --password password123 \
+  --protocol TLS1.3 \
+  --http-port 9402 \
+  --scrape-interval 60
+
+ExecStop=/bin/kill -SIGTERM $MAINPID
+
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

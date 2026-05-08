@@ -1,0 +1,25 @@
+[Unit]
+Description=IBM Connect:Direct CDWS Prometheus Exporter
+After=network.target
+
+[Service]
+User=pyapp
+Group=pyapp
+Type=simple
+Restart=always
+WorkingDirectory=/opt/pyapp
+
+ExecStart=/usr/bin/python3 /opt/pyapp/ibmcd_restapi_otel_exporter.py \
+  --cdws_server https://localhost:9443 \
+  --cd_ipaddress 192.168.1.1 \
+  --cd_user cdadmin \
+  --cd_pw secretpassword \
+  --cd_port 1363 \
+  --cd_protocol TLS1.3 \
+  --port 9402 \
+  --interval 60
+
+ExecStop=/bin/kill -SIGTERM $MAINPID
+
+[Install]
+WantedBy=multi-user.target
