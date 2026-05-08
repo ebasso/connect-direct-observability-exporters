@@ -7,29 +7,31 @@ git clone <repository-url>
 
 cd connect-direct-prometheus-exporters
 
-cd prometheus-exporters/cd-restapi-exporter
+cd otel-exporters/cd-restapi-metrics-exporter
 ```
 
-Inside the `prometheus-exporters/cd-restapi-exporter` directory:
+Inside the `otel-exporters/cd-restapi-metrics-exporter` directory:
 
 ```bash
 python3.11 -m venv .venv
 source .venv/bin/activate
 pip3.11 install -r requirements.txt
 
-python3.11 ibmcd_restapi_exporter.py --cdws_server <CDWS URL> --cdws_user <CDWS User> --cdws_pw <password>  --node_ipaddress --node_port --node_protocol
+
+python3.11 ibmcd_restapi_otel_exporter.py --cdws_server <CDWS URL> --cd_user <CDWS User> --cd_pw <password>  --cd_ipaddress --cd_port --cd_protocol
 ```
 
 where 
 
 | Parameter    | Description                | Default value                  |  Values |
 |--------------|----------------------------|--------------------------------|---------|
-| cdws_server  | C:D WebServices server URL | Sample: https://localhost:9443 | 
-| cd_ipaddress | C:D Ip Address             | | |
-| cd_user      | C:D username               | | |
-| cd_pw        | C:D password               | | |
-| cd_port      | C:D port                   | 1363 | |
+| cdws_server  | C:D WebServices server URL | Sample: https://localhost:9443 |         |
+| cd_ipaddress | C:D Ip Address             |                                |         |
+| cd_user      | C:D username               |                                |         |
+| cd_pw        | C:D password               |                                |         |
+| cd_port      | C:D port                   | 1363                           |         |
 | cd_protocol  | C:D protocol               | TLS1.3            | TCPIP, TLS1.2, TLS1.3 |
+| port         | exporter port              | 9402                           |         |
 
 
 Metrics are available at: http://localhost:9402/
